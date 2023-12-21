@@ -23,7 +23,7 @@ class fade():
         return faded
 
     def chroma(text: str):
-        os.system("")  # Enable ANSI escape sequences for coloring in Windows
+        os.system("") 
         faded = ""
         if len(text) <= 18:
             decrement = 10
@@ -77,7 +77,7 @@ class fade():
     
 
     def gold(text: str):
-        os.system("")  # Enable ANSI escape sequences for coloring in Windows
+        os.system("")  
         faded = ""
         if len(text) <= 18:
             decrement = 10
