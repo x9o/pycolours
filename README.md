@@ -22,6 +22,7 @@
 
 <img width="538" alt="image" src="https://github.com/x9o/pycolours/assets/95175948/c0e24788-062e-4958-a11b-89420cb9447f">
 
+# Chroma Animation
 
-
+![chroma](https://github.com/x9o/pycolours/assets/95175948/6ef8c4bc-a17e-491d-a2c2-ce949b8034f2)
 
