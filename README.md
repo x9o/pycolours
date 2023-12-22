@@ -18,6 +18,10 @@
 
 <img width="496" alt="image" src="https://github.com/x9o/colors/assets/95175948/51d0371f-08b3-4988-98f9-89381333a5f0">
 
+# Wave
+
+<img width="538" alt="image" src="https://github.com/x9o/pycolours/assets/95175948/c0e24788-062e-4958-a11b-89420cb9447f">
+
 
 
 
