@@ -1,7 +1,12 @@
 import os
 import time
+import random
+import sys
 
-xl = len("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+
+# added progress bar and sprinter
+
+xl = 72
 
 class fade():
 
@@ -56,6 +61,10 @@ class fade():
         {c} 
 
         {flmb}
+
+        [-] Progress bar
+
+        [-] Spinner
 
         ----------------------------------------------------------------------------------
 
@@ -114,7 +123,7 @@ class fade():
         return faded
 
     def chroma(text: str, dec: int = None):
-        os.system("")  
+        os.system("")  # Enable ANSI escape sequences for coloring in Windows
         faded = ""
         if dec == None:
             if len(text) <= 18:
@@ -315,8 +324,8 @@ class fade():
         ░░████╔═████║░██╔══██║░╚████╔╝░██╔══╝░░
         ░░╚██╔╝░╚██╔╝░██║░░██║░░╚██╔╝░░███████╗
         ░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝░░░╚═╝░░░╚══════╝"""))
-        wl = len("The great great great great great great great great great blue oceanic sea.")
-        print(fade.wave(f"The great great great great great great great great great blue oceanic sea. Characters: {wl}"))
+        wl = len("A long body of water curling into an arched form and breaking on the shore.")
+        print(fade.wave(f"A long body of water curling into an arched form and breaking on the shore. Characters: {wl}"))
         print(fade.wave(f"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Characters: {xl}"))
 
 
@@ -335,7 +344,47 @@ class fade():
                         
                         """
 
-        duration = 10  # Animation duration in seconds
+        duration = 10 
         speed = 0.01
         
         fade.chroma_animation(text, duration, speed)
+
+    def progressbar(total=100, prefix='Progress:', suffix='', decimals=1, length=50, fill='█', startdelay=0.02, enddelay=0.05, download=False, file_size=0, size_extension="mb"):
+        """
+        Display a progress bar in the console.
+
+        Parameters:
+            total (int): The total number of iterations.
+            prefix (str): A prefix string to display before the progress bar.
+            suffix (str): A suffix string to display after the progress bar.
+            decimals (int): The number of decimal places to display in the progress percentage.
+            length (int): The length of the progress bar in characters.
+            fill (str): The character used to fill the progress bar.
+            startdelay (float): The lower limit of the random delay when progressing.
+            enddelay (float): The upper limit of the random delay when progressing.
+            download (bool): Whether to show a fake file download progress or not.
+            file_size (float): The fake file size to simulate downloading.
+            size_extension (str): MB, GB or KB, or whatever you like.
+        """
+        if download:
+            for iteration in range(total + 1):
+                percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+                filled_length = int(length * iteration // total)
+                bar = fill * filled_length + '-' * (length - filled_length)
+                downloaded_mb = round((file_size * (iteration / total)), 1)
+                print(f'\r{prefix} |{bar}| {percent}% {suffix} {downloaded_mb}{size_extension}/{file_size}{size_extension}', end='', flush=True)
+                time.sleep(random.uniform(startdelay, enddelay))
+        else:
+            for iteration in range(total + 1):
+                percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
+                filled_length = int(length * iteration // total)
+                bar = fill * filled_length + '-' * (length - filled_length)
+                print(f'\r{prefix} |{bar}| {percent}% {suffix}', end='', flush=True)
+                time.sleep(random.uniform(startdelay, enddelay))
+     
+    def spinner(txt: str, dur: int):
+        l = ['|', '/', '-', '\\']
+        for i in l * dur:
+            sys.stdout.write(f"""\r[{i}] {txt} [{i}]""")
+            sys.stdout.flush()
+            time.sleep(0.1)
